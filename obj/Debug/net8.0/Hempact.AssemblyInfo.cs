@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hempact")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59c857e5810e1480a769f05a302456bf160e040c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hempact")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hempact")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
