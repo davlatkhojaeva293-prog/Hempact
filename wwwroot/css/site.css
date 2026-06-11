@@ -1207,3 +1207,70 @@ body {
         justify-content: center;
     }
 }
+@media (max-width: 768px) {
+
+    .hero-section {
+        background-position: center top !important;
+        background-size: cover !important;
+        min-height: 700px !important;
+    }
+
+    .hero-title {
+        font-size: 70px !important;
+        line-height: 0.9 !important;
+        max-width: 100% !important;
+    }
+
+    .hero-content {
+        padding-top: 180px !important;
+    }
+
+    .hero-subtitle {
+        font-size: 18px !important;
+        max-width: 100% !important;
+    }
+}
+@media (max-width: 768px) {
+    .hero-section {
+        background-image: url('/images/hero.png') !important;
+        background-size: cover !important;
+        background-position: center top !important;
+        background-repeat: no-repeat !important;
+        min-height: 720px !important;
+        padding: 90px 24px 70px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        overflow: hidden !important;
+    }
+
+    .hero-content {
+        max-width: 90% !important;
+        margin: 0 auto !important;
+        transform: translateY(90px);
+    }
+
+    .hero-title {
+        font-size: 58px !important;
+        line-height: 1 !important;
+        white-space: normal !important;
+    }
+
+    .hero-subtitle {
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+    }
+
+    .hero-buttons {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 18px !important;
+    }
+
+    .hero-primary-btn,
+    .hero-secondary-btn {
+        width: 270px !important;
+        justify-content: center !important;
+    }
+}
