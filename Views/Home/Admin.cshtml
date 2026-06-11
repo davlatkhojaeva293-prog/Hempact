@@ -1,0 +1,219 @@
+@model Hempact.Models.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="admin-page">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <p class="section-label">ADMIN PANEL</p>
+
+            <h1 class="products-title">
+                Hempact Dashboard
+            </h1>
+
+            <p class="text-muted fs-5">
+                Manage products, orders, subscriptions and customer messages.
+            </p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="admin-stat-card">
+                    <h6>Total Products</h6>
+                    <h2>@Model.TotalProducts</h2>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="admin-stat-card">
+                    <h6>Total Orders</h6>
+                    <h2>@Model.TotalOrders</h2>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="admin-stat-card">
+                    <h6>Subscribers</h6>
+                    <h2>@Model.TotalSubscriptions</h2>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="admin-stat-card">
+                    <h6>Messages</h6>
+                    <h2>@Model.TotalMessages</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h3>Product Management</h3>
+
+            <form asp-controller="Home" asp-action="AddProduct" method="post" class="mb-4">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <input name="name" class="form-control" placeholder="Product Name" />
+                    </div>
+
+                    <div class="col-md-2">
+                        <input name="price" type="number" step="0.01" class="form-control" placeholder="Price" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <input name="description" class="form-control" placeholder="Description" />
+                    </div>
+
+                    <div class="col-md-2">
+                        <input name="stock" type="number" class="form-control" placeholder="Stock" />
+                    </div>
+
+                    <div class="col-md-2">
+                        <input name="imageUrl" class="form-control" placeholder="Image URL" />
+                    </div>
+
+                    <div class="col-md-12">
+                        <button type="submit" class="admin-add-btn">
+                            Add Product
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <table class="table admin-table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>$@product.Price</td>
+                            <td>@product.Stock</td>
+                            <td>
+                                <a href="/Home/EditProduct?id=@product.Id" class="admin-edit-btn">
+                                    Edit
+                                </a>
+
+                                <form asp-controller="Home" asp-action="DeleteProduct" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="@product.Id" />
+                                    <button type="submit" class="admin-delete-btn">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-card mt-5">
+            <h3>Recent Orders</h3>
+
+            <table class="table admin-table">
+                <thead>
+                    <tr>
+    <th>Order ID</th>
+    <th>Customer</th>
+    <th>Amount</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var order in Model.Orders)
+{
+    <tr>
+        <td>HMP-2025-@order.Id</td>
+        <td>@order.CustomerName</td>
+        <td>$@order.TotalAmount</td>
+        <td><span class="admin-status">@order.Status</span></td>
+
+        <td>
+            <form asp-controller="Home"
+                  asp-action="DeleteOrder"
+                  method="post"
+                  style="display:inline;">
+
+                <input type="hidden"
+                       name="id"
+                       value="@order.Id" />
+
+                <button type="submit"
+                        class="admin-delete-btn">
+                    Delete
+                </button>
+
+            </form>
+        </td>
+
+    </tr>
+}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-card mt-5">
+            <h3>Recent Subscriptions</h3>
+
+            <table class="table admin-table">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Plan</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var subscription in Model.Subscriptions)
+                    {
+                        <tr>
+                            <td>@subscription.FullName</td>
+                            <td>@subscription.Email</td>
+                            <td>@subscription.PlanType</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-card mt-5">
+            <h3>Recent Messages</h3>
+
+            <table class="table admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var message in Model.ContactMessages)
+                    {
+                        <tr>
+                            <td>@message.FullName</td>
+                            <td>@message.Email</td>
+                            <td>@message.Message</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hempact</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Hempact.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<script>
+window.addEventListener("scroll", function () {
+
+    const navbar = document.querySelector(".navbar-home");
+
+    if (!navbar) return;
+
+    if (window.scrollY > 50) {
+        navbar.classList.add("navbar-scrolled");
+    }
+    else {
+        navbar.classList.remove("navbar-scrolled");
+    }
+
+});
+</script>
+<body class="@(ViewData["Title"]?.ToString() == "Hempact" ? "home-page" : "")">
+    <header>
+   <nav id="mainNavbar"
+     class="navbar navbar-expand-lg py-3 @(ViewData["Title"]?.ToString() == "Hempact" ? "navbar-home" : "navbar-inner fixed-top bg-white shadow-sm")"
+     style="z-index:1000;">
+    <div class="container">
+        <a class="navbar-brand hempact-logo"
+   asp-controller="Home"
+   asp-action="Index">
+    HEMPACT
+</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item">
+                  <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Products">Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Subscription">Subscription</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+                </li>
+
+               <li class="nav-item ms-lg-3">
+ @using System.Text.Json
+@using Hempact.Models
+
+@{
+    var cartJson = Context.Session.GetString("Cart");
+    var cart = string.IsNullOrEmpty(cartJson)
+        ? new List<CartItem>()
+        : JsonSerializer.Deserialize<List<CartItem>>(cartJson) ?? new List<CartItem>();
+
+    var cartCount = cart.Sum(x => x.Quantity);
+}
+
+<a class="btn rounded-circle shadow-sm d-flex align-items-center justify-content-center cart-icon-wrapper"
+   style="background:#e8f2e6; color:#1f6b43; width:44px; height:44px;"
+   asp-controller="Home"
+   asp-action="Cart"
+   title="Cart">
+
+    <i class="bi bi-cart3 fs-5"></i>
+
+    @if (cartCount > 0)
+    {
+        <span class="cart-badge">@cartCount</span>
+    }
+
+</a>
+</li>
+
+<li class="nav-item ms-lg-2">
+    <a class="btn rounded-circle shadow-sm d-flex align-items-center justify-content-center"
+       style="background:#e8f2e6; width:44px; height:44px;"
+       asp-controller="Home"
+       asp-action="Login"
+       title="Login">
+
+        <i class="bi bi-person fs-5" style="color:#1f6b43;"></i>
+
+    </a>
+</li>
+
+                
+
+ <li class="nav-item ms-lg-3">
+    <a asp-controller="Home"
+       asp-action="Subscription"
+       class="create-plan-btn">
+        Create Your Plan
+        <i class="bi bi-arrow-right ms-2"></i>
+    </a>
+</li>
+
+               
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+    </header>
+    <main role="main">
+    @RenderBody()
+</main>
+
+ <footer class="footer-dark mt-5">
+    <div class="container py-5">
+
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+                <h3 class="hempact-footer-logo">HEMPACT</h3>
+                <p class="mt-3">
+                    Sustainable period care products designed for women and the environment.
+                </p>
+
+                <div class="mt-4">
+                    <h6>Stay in touch</h6>
+                    <div class="input-group mt-2">
+                        <input type="email" class="form-control" placeholder="Your email address">
+                        <button class="btn btn-light">Send</button>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="https://www.instagram.com/hempact_/"
+   target="_blank"
+   class="social-icon">
+    <i class="bi bi-instagram"></i>
+</a>
+
+                    <a href="https://twitter.com" target="_blank" class="footer-social me-3">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+
+                   <a href="https://www.linkedin.com/company/hempactt/"
+   target="_blank"
+   class="footer-social">
+    <i class="bi bi-linkedin"></i>
+</a>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5>Shop</h5>
+                <p><a asp-controller="Home" asp-action="Products">Products</a></p>
+                <p><a asp-controller="Home" asp-action="Subscription">Subscription Plans</a></p>
+                <p><a asp-controller="Home" asp-action="Cart">Cart</a></p>
+                <p><a asp-controller="Home" asp-action="Checkout">Checkout</a></p>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <h5>Hempact</h5>
+                <p><a asp-controller="Home" asp-action="Index">Who We Are</a></p>
+                <p><a asp-controller="Home" asp-action="Contact">Contact</a></p>
+                <p><a asp-controller="Home" asp-action="Login">Login</a></p>
+                <p><a asp-controller="Home" asp-action="Admin">Admin Panel</a></p>
+
+              <div class="payment-logos mt-3">
+
+    <img src="~/images/payments/visa.png" alt="Visa">
+
+    <img src="~/images/payments/mastercard.png" alt="Mastercard">
+
+    <img src="~/images/payments/amex.png" alt="American Express">
+
+    <img src="~/images/payments/paypal.png" alt="PayPal">
+
+</div>
+
+                <div class="mt-4">
+                    <span>EN</span>
+                    <span class="mx-2">|</span>
+                    <span>TR</span>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="footer-line">
+
+        <div class="text-center small">
+            © 2025 Hempact. All rights reserved.
+        </div>
+
+    </div>
+</footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

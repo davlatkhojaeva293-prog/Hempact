@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="container" style="padding-top:120px; padding-bottom:100px;">
+
+    <div class="text-center mb-5">
+        <h1 class="hero-title mb-3">
+            Let's Talk
+        </h1>
+
+        <p class="hero-subtitle">
+            Questions, partnership ideas, or simply a thought to share —
+            we read every message.
+        </p>
+    </div>
+
+    <div class="row g-5 align-items-start">
+
+        <div class="col-lg-5">
+
+            <div class="contact-info-item mb-4">
+                <div class="contact-icon">
+                    <i class="bi bi-envelope"></i>
+                </div>
+
+                <div>
+                    <h6 class="contact-small-title">EMAIL</h6>
+                    <p class="contact-info-text">hello@hempact.com</p>
+                </div>
+            </div>
+
+            <div class="contact-info-item mb-4">
+                <div class="contact-icon">
+                    <i class="bi bi-geo-alt"></i>
+                </div>
+
+                <div>
+                    <h6 class="contact-small-title">ADDRESS</h6>
+                    <p class="contact-info-text">
+                        Piripaşa Mh., 34445<br />
+                        Beyoğlu, İstanbul<br />
+                        Türkiye
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-7">
+
+            <div class="contact-card">
+
+                <form asp-controller="Home"
+                      asp-action="AddContactMessage"
+                      method="post">
+
+                    <div class="mb-4">
+                        <label class="contact-label">Name</label>
+                        <input name="fullName"
+                               class="contact-input"
+                               placeholder="Your name" />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="contact-label">Email</label>
+                        <input name="email"
+                               class="contact-input"
+                               placeholder="Your email" />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="contact-label">Message</label>
+                        <textarea name="message"
+                                  class="contact-textarea"
+                                  placeholder="Write your message..."
+                                  rows="6"></textarea>
+                    </div>
+
+                    <button class="contact-btn">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

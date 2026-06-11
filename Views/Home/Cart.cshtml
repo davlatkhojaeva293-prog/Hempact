@@ -1,0 +1,158 @@
+@model List<Hempact.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Cart";
+    var totalPrice = Model.Sum(item => item.Total);
+}
+
+<div class="cart-page">
+    <div class="container">
+
+    <div class="text-center mb-5">
+        <p class="section-label">
+    YOUR CART
+</p>
+
+<h1 class="products-title">
+    Your Hempact essentials.
+</h1>
+
+<p class="text-muted fs-5">
+    Review your sustainable care products before checkout.
+</p>
+    </div>
+
+    @if (Model.Count == 0)
+{
+    <div class="empty-cart-card text-center">
+
+        <div class="empty-cart-icon">
+            <i class="bi bi-bag"></i>
+        </div>
+
+        <h3>Your cart is empty</h3>
+
+        <p>
+            Explore our sustainable period care products and create your own Hempact routine.
+        </p>
+
+        <a asp-controller="Home"
+           asp-action="Products"
+           class="empty-cart-btn">
+            Continue Shopping
+        </a>
+
+    </div>
+}
+    else
+    {
+        <div class="row g-5">
+
+            <div class="col-lg-8">
+                @foreach (var item in Model)
+                {
+                    <div class="cart-product-card">
+                        <div class="row align-items-center">
+
+                            <div class="col-md-6 d-flex align-items-center gap-4">
+
+   @{
+    var imageName = "liners1.webp";
+
+    if ((item.ProductName ?? "").Contains("Super"))
+    {
+        imageName = "superpad1.jpg";
+    }
+    else if ((item.ProductName ?? "").Contains("Regular"))
+    {
+        imageName = "regularpad1.webp";
+    }
+}
+<div class="cart-product-image">
+    <img src="~/images/products/@imageName"
+         class="img-fluid" />
+</div>
+    <div>
+        <h4 class="fw-bold mb-2">@item.ProductName</h4>
+
+        <p class="text-muted mb-2">
+            Sustainable hemp-based period care product
+        </p>
+
+     
+    </div>
+
+</div>
+
+                            <div class="col-md-3 text-md-center mt-3 mt-md-0">
+                                <div class="cart-quantity-box">
+    <a asp-controller="Home"
+       asp-action="DecreaseQuantity"
+       asp-route-id="@item.ProductId">
+        -
+    </a>
+
+    <strong>@item.Quantity</strong>
+
+    <a asp-controller="Home"
+       asp-action="IncreaseQuantity"
+       asp-route-id="@item.ProductId">
+        +
+    </a>
+</div>
+                            </div>
+
+                            <div class="col-md-3 text-md-end mt-3 mt-md-0">
+                                <h5 class="fw-bold">$@item.Total</h5>
+
+                                <a asp-controller="Home"
+   asp-action="RemoveFromCart"
+   asp-route-id="@item.ProductId"
+   class="cart-remove-icon">
+    <i class="bi bi-trash"></i>
+</a>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col-lg-4">
+                <div class="checkout-summary">
+                    <h4>Order Summary</h4>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Subtotal</span>
+                        <strong>$@totalPrice</strong>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Shipping</span>
+                        <strong>Free</strong>
+                    </div>
+
+                    <hr />
+
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="fw-bold">Total</span>
+                        <strong class="text-success fs-4">$@totalPrice</strong>
+                    </div>
+
+                    <a asp-controller="Home"
+                       asp-action="Checkout"
+                       class="cart-checkout-btn">
+                        Proceed to Checkout
+                    </a>
+
+                    <a asp-controller="Home"
+                       asp-action="Products"
+                       class="cart-continue-btn">
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

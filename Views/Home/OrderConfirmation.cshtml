@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<div class="container" style="padding-top:120px; padding-bottom:100px;">
+
+    <div class="card organic-card text-center mx-auto p-5"
+         style="max-width:800px; border-radius:30px;">
+
+        <div class="mb-4">
+
+            <div style="
+                width:100px;
+                height:100px;
+                background:#e8f2e6;
+                border-radius:50%;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                margin:auto;">
+
+                <span style="
+                    color:#1f6b43;
+                    font-size:50px;">
+                    ✓
+                </span>
+
+            </div>
+
+        </div>
+
+        <p class="text-success fw-bold">
+            PAYMENT SUCCESSFUL
+        </p>
+
+        <h1 class="fw-bold mb-4">
+            Thank You For Your Order
+        </h1>
+
+        <p class="text-muted fs-5 mb-4">
+            Your order has been successfully placed and is now being processed.
+        </p>
+
+        <div class="row text-center mt-4 mb-4">
+
+            <div class="col-md-4">
+                <h6 class="text-muted">Order Number</h6>
+                <h5>HMP-2025-001</h5>
+            </div>
+
+            <div class="col-md-4">
+                <h6 class="text-muted">Status</h6>
+                <h5 class="text-success">Paid</h5>
+            </div>
+
+            <div class="col-md-4">
+                <h6 class="text-muted">Delivery</h6>
+                <h5>2-3 Days</h5>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="text-muted">
+            Thank you for supporting sustainable period care products and choosing Hempact.
+        </p>
+
+        <div class="mt-4">
+
+            <a asp-controller="Home"
+               asp-action="Products"
+               class="btn btn-success btn-lg me-3">
+                Continue Shopping
+            </a>
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-outline-secondary btn-lg">
+                Back Home
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

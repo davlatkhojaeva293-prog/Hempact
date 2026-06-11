@@ -1,0 +1,89 @@
+@model List<Hempact.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="products-page">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <p class="section-label">
+                OUR COLLECTION
+            </p>
+
+            <h1 class="products-title">
+                Essentials for every cycle.
+            </h1>
+
+            <p class="text-muted fs-5">
+                Explore sustainable period care products designed for comfort, confidence and everyday wellbeing.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-4">
+                    <div class="product-list-card h-100">
+
+                        @if (!string.IsNullOrEmpty(product.ImageUrl))
+                        {
+                            <img src="@product.ImageUrl"
+                                 class="product-list-img"
+                                 alt="@product.Name" />
+                        }
+                        else
+                        {
+                            <div class="product-list-placeholder">
+                                No Image
+                            </div>
+                        }
+
+                        <div class="product-list-body">
+
+                            <h3 class="product-name">
+                                @product.Name
+                            </h3>
+
+                            <p class="product-list-description">
+                                @product.Description
+                            </p>
+
+                            <p class="product-price">
+                                $@product.Price
+                            </p>
+
+                            <p class="stock-text">
+                                In stock: @product.Stock
+                            </p>
+
+                            <div class="product-footer">
+
+                                <a asp-controller="Home"
+                                   asp-action="ProductDetails"
+                                   asp-route-id="@product.Id"
+                                   class="product-link">
+                                    View Details
+                                </a>
+
+                                <a asp-controller="Home"
+                                   asp-action="AddToCart"
+                                   asp-route-id="@product.Id"
+                                   class="product-plus">
+                                    +
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>
