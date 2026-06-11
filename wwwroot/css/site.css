@@ -1144,3 +1144,66 @@ body {
         margin-top: 25px;
     }
 }
+@media (max-width: 768px) {
+    .navbar,
+    header {
+        height: auto !important;
+        padding: 22px 20px !important;
+    }
+
+    .navbar-brand,
+    .logo {
+        font-size: 34px !important;
+    }
+
+    .navbar-nav,
+    .nav-links {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 12px;
+        margin-top: 18px;
+    }
+
+    .nav-icons,
+    .navbar-icons {
+        display: flex !important;
+        justify-content: center;
+        width: 100%;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .hero-section {
+        min-height: auto !important;
+        padding: 70px 20px 60px !important;
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+    .hero-title {
+        font-size: 54px !important;
+        line-height: 0.95 !important;
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .hero-subtitle {
+        font-size: 20px !important;
+        line-height: 1.5;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .hero-primary-btn,
+    .hero-secondary-btn {
+        width: 260px;
+        text-align: center;
+        justify-content: center;
+    }
+}
