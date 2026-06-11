@@ -30,10 +30,20 @@
                     <p class="subscription-feature">✓ Pause anytime</p>
 
                     <button type="button"
-                            class="subscription-btn-outline"
-                            onclick="selectPlan('Basic Plan')">
-                        Choose Lite
-                    </button>
+        class="subscription-btn-outline"
+        onclick="showPlanDetails('Basic Plan', 'Lite plan includes 1 box of pads, free shipping and flexible pause option.')">
+    Choose Lite
+</button>
+<div id="selectedPlanBox" class="selected-plan-box d-none mt-5">
+    <h3 id="selectedPlanTitle"></h3>
+    <p id="selectedPlanDescription"></p>
+
+    <button type="button"
+            class="contact-btn"
+            onclick="goToSubscriptionForm()">
+        Continue With This Plan
+    </button>
+</div>
                 </div>
             </div>
 
@@ -50,11 +60,21 @@
                     <p class="subscription-feature">✓ 10% off add-ons</p>
                     <p class="subscription-feature">✓ Pause anytime</p>
 
-                    <button type="button"
-                            class="subscription-btn-filled"
-                            onclick="selectPlan('Essential Plan')">
-                        Choose Essential
-                    </button>
+                   <button type="button"
+        class="subscription-btn-filled"
+        onclick="showPlanDetails('Essential Plan', 'Essential plan includes 2 boxes of your choice, free shipping, 10% off add-ons and pause anytime.')">
+    Choose Essential
+</button>
+<div id="selectedPlanBox" class="selected-plan-box d-none mt-5">
+    <h3 id="selectedPlanTitle"></h3>
+    <p id="selectedPlanDescription"></p>
+
+    <button type="button"
+            class="contact-btn"
+            onclick="goToSubscriptionForm()">
+        Continue With This Plan
+    </button>
+</div>
                 </div>
             </div>
 
@@ -70,10 +90,20 @@
                     <p class="subscription-feature">✓ Priority support</p>
 
                     <button type="button"
-                            class="subscription-btn-outline"
-                            onclick="selectPlan('Premium Plan')">
-                        Choose Complete
-                    </button>
+        class="subscription-btn-outline"
+        onclick="showPlanDetails('Premium Plan', 'Complete plan includes 3 boxes, 1 surprise care item, free shipping, 15% off everything and priority support.')">
+    Choose Complete
+</button>
+<div id="selectedPlanBox" class="selected-plan-box d-none mt-5">
+    <h3 id="selectedPlanTitle"></h3>
+    <p id="selectedPlanDescription"></p>
+
+    <button type="button"
+            class="contact-btn"
+            onclick="goToSubscriptionForm()">
+        Continue With This Plan
+    </button>
+</div>
                 </div>
             </div>
 
@@ -133,9 +163,20 @@
 </div>
 
 <script>
-    function selectPlan(planName) {
+    function showPlanDetails(planName, description) {
         document.getElementById("planType").value = planName;
 
+        document.getElementById("selectedPlanTitle").innerText = planName;
+        document.getElementById("selectedPlanDescription").innerText = description;
+
+        document.getElementById("selectedPlanBox").classList.remove("d-none");
+
+        document.getElementById("selectedPlanBox").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    function goToSubscriptionForm() {
         document.querySelector(".subscription-form-card").scrollIntoView({
             behavior: "smooth"
         });
