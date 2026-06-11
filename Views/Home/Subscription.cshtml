@@ -78,23 +78,16 @@
 
       
 
-<div id="selectedPlanBox" class="selected-plan-box d-none">
+<script>
+    function showPlanDetails(planName, description) {
+        document.getElementById("planType").value = planName;
 
-    <h3 id="selectedPlanTitle"></h3>
-
-    <p id="selectedPlanDescription"></p>
-
-    <button type="button"
-
-            class="selected-plan-btn"
-
-            onclick="goToSubscriptionForm()">
-
-        Continue With This Plan
-
-    </button>
-
-</div>
+        document.querySelector(".subscription-form-card").scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+</script>
 
 <div class="subscription-form-card mt-5">
 
