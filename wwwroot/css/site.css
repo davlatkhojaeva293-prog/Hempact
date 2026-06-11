@@ -1274,3 +1274,19 @@ body {
         justify-content: center !important;
     }
 }
+.subscription-page {
+    background: #f7f8f3;
+    padding: 130px 0 120px;
+}
+
+.subscription-card {
+    max-width: 780px;
+    background: #ffffff;
+    padding: 60px;
+    border-radius: 34px;
+    box-shadow: 0 25px 70px rgba(31, 80, 50, 0.10);
+}
+
+.subscription-card .contact-btn {
+    margin-top: 10px;
+}

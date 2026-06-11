@@ -3,117 +3,64 @@
 }
 
 <div class="subscription-page">
+
     <div class="container">
-   <div class="text-center mb-5">
 
-    <p class="section-label">
-        SUBSCRIPTION
-    </p>
+        <div class="text-center mb-5">
+            <p class="section-label">HEMPACT PLAN</p>
 
-    <h1 class="products-title">
-        Your cycle, on auto-pilot.
-    </h1>
+            <h1 class="hero-title mb-3">
+                Create your personal care plan.
+            </h1>
 
-    <p class="text-muted fs-5">
-        Pick a plan, set your delivery rhythm. Pause, skip or change anytime.
-    </p>
-
-</div>
-   
-
-    <div class="row g-4">
-
-    <div class="col-md-4">
-        <div class="subscription-card">
-            <h3 class="subscription-plan-name">Lite</h3>
-
-            <p class="subscription-price">$14 <span>per cycle</span></p>
-
-            <p class="subscription-feature">✓ 1 box of pads</p>
-            <p class="subscription-feature">✓ Free shipping</p>
-            <p class="subscription-feature">✓ Pause anytime</p>
-
-            <button class="subscription-btn-outline">
-                Choose Lite
-            </button>
+            <p class="hero-subtitle">
+                Choose your preferred Hempact routine and start your sustainable period care journey.
+            </p>
         </div>
-    </div>
 
-    <div class="col-md-4">
-        <div class="subscription-card featured-plan">
-            <p class="most-loved">MOST LOVED</p>
+        <div class="subscription-card mx-auto">
 
-            <h3 class="subscription-plan-name">Essential</h3>
+            <form asp-controller="Home"
+                  asp-action="AddSubscription"
+                  method="post">
 
-            <p class="subscription-price">$24 <span>per cycle</span></p>
+                <div class="mb-4">
+                    <label class="contact-label">Full Name</label>
+                    <input name="fullName"
+                           class="contact-input"
+                           placeholder="Enter your name"
+                           required />
+                </div>
 
-            <p class="subscription-feature">✓ 2 boxes, your choice</p>
-            <p class="subscription-feature">✓ Free shipping</p>
-            <p class="subscription-feature">✓ 10% off add-ons</p>
-            <p class="subscription-feature">✓ Pause anytime</p>
+                <div class="mb-4">
+                    <label class="contact-label">Email Address</label>
+                    <input name="email"
+                           type="email"
+                           class="contact-input"
+                           placeholder="Enter your email"
+                           required />
+                </div>
 
-            <button class="subscription-btn-filled">
-                Choose Essential
-            </button>
+                <div class="mb-4">
+                    <label class="contact-label">Select Plan</label>
+
+                    <select name="planType"
+                            class="contact-input"
+                            required>
+                        <option value="Basic Plan">Basic Plan</option>
+                        <option value="Essential Plan">Essential Plan</option>
+                        <option value="Premium Plan">Premium Plan</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="contact-btn">
+                    Submit Subscription
+                </button>
+
+            </form>
+
         </div>
+
     </div>
 
-    <div class="col-md-4">
-        <div class="subscription-card">
-            <h3 class="subscription-plan-name">Complete</h3>
-
-            <p class="subscription-price">$38 <span>per cycle</span></p>
-
-            <p class="subscription-feature">✓ 3 boxes + 1 surprise care item</p>
-            <p class="subscription-feature">✓ Free shipping</p>
-            <p class="subscription-feature">✓ 15% off everything</p>
-            <p class="subscription-feature">✓ Priority support</p>
-
-            <button class="subscription-btn-outline">
-                Choose Complete
-            </button>
-        </div>
-    </div>
-
-</div>
-
-        
-
-    
-
-  <div class="subscription-form-card mt-5">
-        <h3 class="subscription-form-title">
-    Start Your Subscription
-</h3>
-
-<p class="text-muted mb-4">
-    Tell us a little about yourself and we'll prepare your Hempact plan.
-</p>
-
-        <form asp-controller="Home" asp-action="AddSubscription" method="post">
-            <div class="mb-3">
-                <label class="form-label">Full Name</label>
-                <input name="fullName" type="text" class="form-control" placeholder="Enter your name">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Email Address</label>
-                <input name="email" type="email" class="form-control" placeholder="Enter your email">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Select Plan</label>
-                <select name="planType" class="form-control">
-                    <option>Basic Plan</option>
-                    <option>Premium Plan</option>
-                    <option>Family Plan</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-success">
-                Submit Subscription
-            </button>
-        </form>
-    </div>
-</div>
 </div>
