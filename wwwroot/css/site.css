@@ -844,22 +844,63 @@ body {
     box-shadow:0 10px 30px rgba(0,0,0,.05);
 }
 
-.contact-label{
-    display:block;
-    margin-bottom:10px;
-    font-size:14px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    color:#6b7280;
+.contact-label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-weight: 600;
+
+    color: #234b36;
+
+    font-size: 16px;
+
 }
 
-.contact-input{
-    width:100%;
-    height:60px;
-    border-radius:30px;
-    border:1px solid #d8d8d8;
-    padding:0 24px;
-    background:#fafafa;
+.contact-input {
+
+    width: 100%;
+
+    padding: 16px 20px;
+
+    border: 1px solid #d9dfd4;
+
+    border-radius: 14px;
+
+    background: #fafbf8;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+
+}
+.contact-input:focus {
+
+    outline: none;
+
+    border-color: #2d6a4f;
+
+    box-shadow: 0 0 0 3px rgba(45,106,79,0.15);
+
+}
+
+.contact-btn {
+
+    background: #2d6a4f;
+
+    color: white;
+
+    border: none;
+
+    padding: 16px 28px;
+
+    border-radius: 14px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+
 }
 
 .contact-textarea{
@@ -882,8 +923,10 @@ body {
     font-weight:600;
 }
 
-.contact-btn:hover{
-    opacity:.9;
+.contact-btn:hover {
+
+    background: #1f5132;
+
 }
 
 .contact-info-item h4{
